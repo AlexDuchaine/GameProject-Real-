@@ -58,7 +58,7 @@ canvas.height = 600;
             context.fillText("Press the 'Enter' key to begin playing ->", 775,580);
             if(keys.Enter) {
                 onMenu = false;
-
+                playAudio.play(); //sound
             }
         }
         else if (!onMenu && !gameOver){
@@ -71,7 +71,7 @@ canvas.height = 600;
 
             if(keys.w && player.isJumping == false) {
                 var jumpAudio = document.getElementById('jumpSound');
-
+                jumpAudio.play(); //sound
                 player.jump(); //2D Motion
             }
 
@@ -111,7 +111,7 @@ canvas.height = 600;
             }
         }
         else if (!onMenu && gameOver) {
-
+            playAudio.pause();
             context.fillStyle = 'black';
             context.fillRect(0,0, canvas.width, canvas.height);
         
@@ -132,3 +132,4 @@ canvas.height = 600;
 
     animate();
     canvas.focus();
+
