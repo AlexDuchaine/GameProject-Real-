@@ -5,7 +5,7 @@ let keys = {};
 canvas.width = 1000;
 canvas.height = 600;
 
-
+function gamePlay() {
     let player = new Player();
     const numberOfObstacles = 100000;
     let obstacles1 = new Array();
@@ -124,7 +124,7 @@ canvas.height = 600;
                 console.log("you pressed enter")
                 onMenu = true;
                 gameOver = false;
-
+                gamePlay();
             }
         }
 
@@ -132,4 +132,5 @@ canvas.height = 600;
 
     animate();
     canvas.focus();
-
+}
+gamePlay();
