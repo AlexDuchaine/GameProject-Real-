@@ -55,7 +55,12 @@ canvas.height = 600;
                 player.jump(); //2D Motion
             }
 
-
+            //IF COLLISION ON ANY CUBE BY PLAYER
+            if((player.position.x < obstacles1[index1 - 1].position.x + obstacles1[index1 - 1].width && player.position.x + player.width > obstacles1[index1 - 1].position.x && player.position.y < obstacles1[index1 - 1].position.y + obstacles1[index1 - 1].height && player.position.y + player.height > obstacles1[index1 - 1].position.y) || 
+            (player.position.x < obstacles2[index2 - 1].position.x + obstacles2[index2 - 1].width && player.position.x + player.width > obstacles2[index2 - 1].position.x && player.position.y < obstacles2[index2 - 1].position.y + obstacles2[index2 - 1].height && player.position.y + player.height > obstacles2[index2 - 1].position.y) ||
+            (player.position.x < obstacles3[index3 - 1].position.x + obstacles3[index3 - 1].width && player.position.x + player.width > obstacles3[index3 - 1].position.x && player.position.y < obstacles3[index3 - 1].position.y + obstacles3[index3 - 1].height && player.position.y + player.height > obstacles3[index3 - 1].position.y)) {
+                gameOver = true;
+            }
 
             player.update();
             obstacles1[index1 - 1].update();
