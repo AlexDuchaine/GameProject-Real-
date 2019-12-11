@@ -35,13 +35,33 @@ canvas.height = 600;
     let index2 = numberOfObstacles;
     let index3 = numberOfObstacles;
 
-
+    let gameOver = false;
+    let onMenu = true;
+    var playAudio = document.getElementById('scholarships');
 
     function animate() {
         requestAnimationFrame(animate);
         context.clearRect(0, 0, canvas.width, canvas.height);
+        if(onMenu && !gameOver) {
+            context.fillStyle = 'black';
+            context.fillRect(0,0, canvas.width, canvas.height);
         
-        
+            context.font = "20px Arial";
+            context.fillStyle = "white";   
+            context.fillText("CUBE NINJA", canvas.width/2 - 70, 80);
+            context.font = "14px Arial";
+            context.fillText("Narrative: You're the less last Green Cube ninja left. You must avoid", 40, 140); //narrative
+            context.fillText("every purple enemy ninja that comes your way! The bigger the enemy, the more points!", 106, 160); //narrative
+            context.fillText("Instructions: To jump press the 'W' key", 40, 220); //instructions
+            context.fillText("(You can choose to stay put or hop to dodge)", 120, 240); //instructions
+            context.font = "11px Arial";
+            context.fillText("Press the 'Enter' key to begin playing ->", 775,580);
+            if(keys.Enter) {
+                onMenu = false;
+
+            }
+        }
+        else if (!onMenu && !gameOver){
 
             //Bottom platform
             context.fillStyle = "#663300";
@@ -51,7 +71,7 @@ canvas.height = 600;
 
             if(keys.w && player.isJumping == false) {
                 var jumpAudio = document.getElementById('jumpSound');
-                jumpAudio.play(); //sound
+
                 player.jump(); //2D Motion
             }
 
@@ -90,10 +110,25 @@ canvas.height = 600;
                 index3--;
             }
         }
-        
-        
+        else if (!onMenu && gameOver) {
 
+            context.fillStyle = 'black';
+            context.fillRect(0,0, canvas.width, canvas.height);
+        
+            context.font = "30px Arial";
+            context.fillStyle = "white";   
+            context.fillText("GAME OVER", canvas.width/2 - 80, canvas.height/2);
+            context.font = "11px Arial";
+            context.fillText("Press the 'Enter' key to restart ->", 835 ,580);
+            if(keys.Enter) {
+                console.log("you pressed enter")
+                onMenu = true;
+                gameOver = false;
 
+            }
+        }
+
+    }
 
     animate();
     canvas.focus();
