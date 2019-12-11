@@ -8,5 +8,30 @@ class Obstacle {
         this.hitEdge = false;
     }
 
+    draw() {
+        context.strokeStyle = '#ffe6e6';
+        context.fillStyle = '#4b0066';
 
+        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        context.strokeRect(this.position.x, this.position.y, this.width, this.height);
+
+    }
+
+    //Limit (Doesn't go through walls)
+    checkBounds() {
+        if(this.position.x <= 10) {
+            this.hitEdge = true
+        }
+        else {
+            this.hitEdge = false
+        }
+    }
+
+    update() {
+        this.checkBounds();
+        this.velocity.x = this.speed;
+        this.position.x += this.velocity.x;
+
+        this.draw();
+    }
 }
